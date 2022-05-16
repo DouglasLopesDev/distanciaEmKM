@@ -11,7 +11,7 @@ CORS(app, supports_credentials=True)
 @app.route('/distance/cep1/<cep1>/cep2/<cep2>', methods=['GET'])
 def get_kilometers_distance(cep1, cep2):
     response = { "result" : get_distance(cep1, cep2)}
-    return json.dumps(response)
+    return json.dumps(response, ensure_ascii=False).encode('utf8')
 
 
 def get_address(cep):
